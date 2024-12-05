@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía de Salud y Nutrición</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            background-color: #f5f5f5;
+        }
+
+        header {
+            background: linear-gradient(135deg, #4CAF50, #2E7D32);
+            color: white;
+            text-align: center;
+            padding: 4rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1490818387583-1baba5e638af');
+            background-size: cover;
+            opacity: 0.1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .seccion {
+            margin-bottom: 60px;
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #2E7D32;
+            margin-bottom: 30px;
+            font-size: 2.2em;
+            text-align: center;
+        }
+
+        .consejos-lista {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .consejos-lista li {
+            background: #E8F5E9;
+            padding: 20px;
+            border-radius: 15px;
+            position: relative;
+            transition: transform 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .consejos-lista li:hover {
+            transform: translateY(-5px);
+        }
+
+        .consejos-lista li:before {
+            content: "🌱";
+            margin-right: 15px;
+            font-size: 1.5em;
+        }
+
+        .calculadora {
+            background: linear-gradient(135deg, #E8F5E9, #C8E6C9);
+            padding: 40px;
+            border-radius: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #2E7D32;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #A5D6A7;
+            border-radius: 10px;
+            font-size: 1em;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus, select:focus {
+            border-color: #4CAF50;
+            outline: none;
+        }
+
+        button {
+            background: linear-gradient(135deg, #4CAF50, #2E7D32);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: transform 0.3s ease;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            transform: scale(1.02);
+            box-shadow: 0 5px 15px rgba(46,125,50,0.3);
+        }
+
+        #recomendaciones {
+            margin-top: 30px;
+            padding: 30px;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .hero-image {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 20px;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Guía de Salud y Nutrición</h1>
+        <p>Tu camino hacia una vida más saludable y equilibrada</p>
+    </header>
+
+    <div class="container">
+        <img src="https://images.unsplash.com/photo-1490818387583-1baba5e638af" alt="Alimentos saludables" class="hero-image">
+        
+        <section class="seccion">
+            <h2>Consejos para una Alimentación Saludable</h2>
+            <ul class="consejos-lista">
+                <li>Come una variedad de frutas y verduras de diferentes colores</li>
+                <li>Incluye proteínas magras en tu dieta</li>
+                <li>Opta por granos integrales en lugar de refinados</li>
+                <li>Limita el consumo de azúcares y grasas saturadas</li>
+                <li>Mantente hidratado bebiendo suficiente agua</li>
+                <li>Come porciones moderadas y escucha a tu cuerpo</li>
+            </ul>
+        </section>
+
+        <section class="seccion calculadora">
+            <h2>Recomendaciones Personalizadas</h2>
+            <form id="formularioSalud">
+                <div class="form-group">
+                    <label for="peso">Peso (kg):</label>
+                    <input type="number" id="peso" required>
+                </div>
+                <div class="form-group">
+                    <label for="altura">Altura (cm):</label>
+                    <input type="number" id="altura" required>
+                </div>
+                <div class="form-group">
+                    <label for="sintomas">Síntomas principales:</label>
+                    <select id="sintomas">
+                        <option value="ninguno">Ninguno</option>
+                        <option value="fatiga">Fatiga</option>
+                        <option value="digestivos">Problemas digestivos</option>
+                        <option value="presion">Presión alta</option>
+                        <option value="azucar">Niveles de azúcar alterados</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="enfermedad">¿Padeces alguna enfermedad?:</label>
+                    <select id="enfermedad">
+                        <option value="ninguna">Ninguna</option>
+                        <option value="diabetes">Diabetes</option>
+                        <option value="celiaquia">Enfermedad Celíaca</option>
+                        <option value="hipertension">Hipertensión</option>
+                        <option value="colesterol">Colesterol Alto</option>
+                        <option value="lactosa">Intolerancia a la Lactosa</option>
+                    </select>
+                </div>
+                <button type="button" onclick="generarRecomendaciones()">Obtener Recomendaciones</button>
+            </form>
+            <div id="recomendaciones"></div>
+        </section>
+    </div>
+
+    <script>
+        function generarRecomendaciones() {
+            const peso = document.getElementById('peso').value;
+            const altura = document.getElementById('altura').value;
+            const sintomas = document.getElementById('sintomas').value;
+            const imc = (peso / ((altura/100) * (altura/100))).toFixed(2);
+            
+            let recomendacion = `<h3 style="color: #2E7D32; margin-bottom: 20px;">Tu IMC es: ${imc}</h3>`;
+            
+            if (imc < 18.5) {
+                recomendacion += "<div style='background: #E8F5E9; padding: 20px; border-radius: 10px; margin-bottom: 20px;'>" +
+                    "<strong>Estás bajo de peso. Recomendaciones:</strong><br>" +
+                    "🍗 Aumenta el consumo de proteínas<br>" +
+                    "🍚 Incluye más carbohidratos complejos<br>" +
+                    "🥜 Consume snacks saludables entre comidas</div>";
+            } else if (imc < 25) {
+                recomendacion += "<div style='background: #E8F5E9; padding: 20px; border-radius: 10px; margin-bottom: 20px;'>" +
+                    "<strong>Tu peso es saludable. Recomendaciones:</strong><br>" +
+                    "🥗 Mantén una dieta balanceada<br>" +
+                    "🏃‍♂️ Realiza ejercicio regular<br>" +
+                    "✨ Continúa con buenos hábitos alimenticios</div>";
+            } else {
+                recomendacion += "<div style='background: #E8F5E9; padding: 20px; border-radius: 10px; margin-bottom: 20px;'>" +
+                    "<strong>Tienes sobrepeso. Recomendaciones:</strong><br>" +
+                    "📉 Reduce el consumo de calorías<br>" +
+                    "🚴‍♀️ Aumenta la actividad física<br>" +
+                    "🚫 Evita alimentos procesados</div>";
+            }
+
+            switch(sintomas) {
+                case "fatiga":
+                    recomendacion += "<div style='background: #E8F5E9; padding: 20px; border-radius: 10px;'>" +
+                        "<strong>Para la fatiga:</strong><br>" +
+                        "🥩 Consume más alimentos ricos en hierro<br>" +
+                        "🥚 Aumenta la ingesta de vitamina B12<br>" +
+                        "😴 Mantén un horario de sueño regular</div>";
+                    break;
+                case "digestivos":
+                    recomendacion += "<div style='background: #E8F5E9; padding: 20px; border-radius: 10px;'>" +
+                        "<strong>Para problemas digestivos:</strong><br>" +
+                        "🥛 Incluye probióticos en tu dieta<br>" +
+                        "⚠️ Evita alimentos irritantes<br>" +
+                        "🥬 Come más fibra soluble</div>";
+                    break;
+                case "presion":
+                    recomendacion += "<div style='background: #E8F5E9; padding: 20px; border-radius: 10px;'>" +
+                        "<strong>Para la presión alta:</strong><br>" +
+                        "🧂 Reduce el consumo de sal<br>" +
+                        "🍌 Come más potasio y magnesio<br>" +
+                        "☕ Evita el alcohol y la cafeína</div>";
+                    break;
+                case "azucar":
+                    recomendacion += "<div style='background: #E8F5E9; padding: 20px; border-radius: 10px;'>" +
+                        "<strong>Para niveles de azúcar:</strong><br>" +
+                        "🍞 Controla el consumo de carbohidratos<br>" +
+                        "🥑 Come más proteínas y grasas saludables<br>" +
+                        "⏰ Mantén horarios regulares de comida</div>";
+                    break;
+            }
+
+            document.getElementById('recomendaciones').innerHTML = recomendacion;
+        }
+    </script>
+</body>
+</html>
