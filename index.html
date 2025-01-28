@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<button style="background-color: red; color: white; padding: 10px 20px; margin: auto; display: block; margin-top: 50%;">Haz clic aquí</button>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -210,6 +209,30 @@
             </form>
             <div id="recomendaciones"></div>
         </section>
+
+        <section class="seccion">
+            <h2>Obtener un Plan de Alimentación</h2>
+            <p>Completa el siguiente formulario para obtener un plan de alimentación personalizado.</p>
+            <form id="formularioPlanAlimentacion">
+                <div class="form-group">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Correo electrónico:</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="edad">Edad:</label>
+                    <input type="number" id="edad" required>
+                </div>
+                <div class="form-group">
+                    <label for="objetivos">Objetivos de salud:</label>
+                    <textarea id="objetivos" required></textarea>
+                </div>
+                <button type="button" onclick="enviarPlanAlimentacion()">Enviar</button>
+            </form>
+        </section>
     </div>
 
     <script>
@@ -273,6 +296,16 @@
             }
 
             document.getElementById('recomendaciones').innerHTML = recomendacion;
+        }
+
+        function enviarPlanAlimentacion() {
+            const nombre = document.getElementById('nombre').value;
+            const email = document.getElementById('email').value;
+            const edad = document.getElementById('edad').value;
+            const objetivos = document.getElementById('objetivos').value;
+
+            // Aquí se podría agregar la lógica para enviar los datos a un servidor o realizar alguna otra acción
+            alert(`Gracias, ${nombre}. Tu plan de alimentación será enviado a ${email} en breve.`);
         }
     </script>
 </body>
