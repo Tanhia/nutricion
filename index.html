@@ -163,15 +163,65 @@
         
         <section class="seccion">
             <h2>Consejos para una Alimentación Saludable</h2>
-            <ul class="consejos-lista">
-                <li>Come una variedad de frutas y verduras de diferentes colores</li>
-                <li>Incluye proteínas magras en tu dieta</li>
-                <li>Opta por granos integrales en lugar de refinados</li>
-                <li>Limita el consumo de azúcares y grasas saturadas</li>
-                <li>Mantente hidratado bebiendo suficiente agua</li>
-                <li>Come porciones moderadas y escucha a tu cuerpo</li>
-            </ul>
+            <div class="consejos-lista">
+                <button class="consejo" onclick="mostrarSugerencias('frutas-y-verduras')">Come una variedad de frutas y verduras de diferentes colores</button>
+                <button class="consejo" onclick="mostrarSugerencias('proteinas-magras')">Incluye proteínas magras en tu dieta</button>
+                <button class="consejo" onclick="mostrarSugerencias('granos-integrales')">Opta por granos integrales en lugar de refinados</button>
+                <button class="consejo" onclick="mostrarSugerencias('azucar-y-grasas')">Limita el consumo de azúcares y grasas saturadas</button>
+                <button class="consejo" onclick="mostrarSugerencias('hidratacion')">Mantente hidratado bebiendo suficiente agua</button>
+                <button class="consejo" onclick="mostrarSugerencias('porciones-moderadas')">Come porciones moderadas y escucha a tu cuerpo</button>
+            </div>
         </section>
+        <script>
+            function mostrarSugerencias(consejo) {
+                let sugerencias = {
+                    'frutas-y-verduras': [
+                        "Incluye frutas y verduras de diferentes colores en tu dieta",
+                        "Asegúrate de comer al menos 5 porciones al día",
+                        "Experimenta con nuevos alimentos para encontrar tus favoritos"
+                    ],
+                    'proteinas-magras': [
+                        "Incluye proteínas magras como pollo, pescado y legumbres",
+                        "Asegúrate de incluir una fuente de proteína en cada comida",
+                        "Experimenta con diferentes métodos de preparación para mantener la variedad"
+                    ],
+                    'granos-integrales': [
+                        "Opta por granos integrales como arroz integral, quinoa y pan integral",
+                        "Asegúrate de leer las etiquetas para asegurarte de que sean integrales",
+                        "Experimenta con diferentes tipos de granos para encontrar tus favoritos"
+                    ],
+                    'azucar-y-grasas': [
+                        "Limita el consumo de azúcares añadidos y grasas saturadas",
+                        "Asegúrate de leer las etiquetas para identificar los alimentos procesados",
+                        "Opta por alimentos naturales y frescos"
+                    ],
+                    'hidratacion': [
+                        "Asegúrate de beber al menos 8 vasos de agua al día",
+                        "Incluye bebidas hidratantes como jugos de frutas y verduras",
+                        "Evita bebidas con azúcar y cafeína"
+                    ],
+                    'porciones-moderadas': [
+                        "Come porciones moderadas para evitar el exceso de calorías",
+                        "Asegúrate de escuchar a tu cuerpo y parar cuando estés satisfecho",
+                        "Experimenta con diferentes tamaños de porciones para encontrar el adecuado para ti"
+                    ]
+                };
+                let listaSugerencias = "<ul>";
+                sugerencias[consejo].forEach(sugerencia => {
+                    listaSugerencias += `<li>${sugerencia}</li>`;
+                });
+                listaSugerencias += "</ul>";
+                let contenedorSugerencias = document.createElement('div');
+                contenedorSugerencias.innerHTML = listaSugerencias;
+                let cerrarSugerencia = document.createElement('button');
+                cerrarSugerencia.textContent = 'Cerrar';
+                cerrarSugerencia.onclick = function() {
+                    contenedorSugerencias.remove();
+                };
+                contenedorSugerencias.appendChild(cerrarSugerencia);
+                document.querySelector('.consejos-lista').appendChild(contenedorSugerencias);
+            }
+        </script>
 
         <section class="seccion calculadora">
             <h2>Recomendaciones Personalizadas</h2>
@@ -208,30 +258,6 @@
                 <button type="button" onclick="generarRecomendaciones()">Obtener Recomendaciones</button>
             </form>
             <div id="recomendaciones"></div>
-        </section>
-
-        <section class="seccion">
-            <h2>Obtener un Plan de Alimentación</h2>
-            <p>Completa el siguiente formulario para obtener un plan de alimentación personalizado.</p>
-            <form id="formularioPlanAlimentacion">
-                <div class="form-group">
-                    <label for="nombre">Nombre:</label>
-                    <input type="text" id="nombre" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Correo electrónico:</label>
-                    <input type="email" id="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="edad">Edad:</label>
-                    <input type="number" id="edad" required>
-                </div>
-                <div class="form-group">
-                    <label for="objetivos">Objetivos de salud:</label>
-                    <textarea id="objetivos" required></textarea>
-                </div>
-                <button type="button" onclick="enviarPlanAlimentacion()">Enviar</button>
-            </form>
         </section>
     </div>
 
@@ -296,17 +322,89 @@
             }
 
             document.getElementById('recomendaciones').innerHTML = recomendacion;
-        }
+        }   
+    </script>
+    <script>
+        function generarPlanAlimentacion() {
+            let sexo = document.getElementById('sexo').value;
+            let estatura = document.getElementById('estatura').value;
+            let peso = document.getElementById('peso').value;
+            let objetivo = document.getElementById('objetivo').value;
+            let planAlimentacion = "";
 
-        function enviarPlanAlimentacion() {
-            const nombre = document.getElementById('nombre').value;
-            const email = document.getElementById('email').value;
-            const edad = document.getElementById('edad').value;
-            const objetivos = document.getElementById('objetivos').value;
+            // Calculo de calorías según objetivo
+            let calorías;
+            if (objetivo === "perder peso") {
+                calorías = 1200;
+            } else if (objetivo === "mantener peso") {
+                calorías = 1500;
+            } else if (objetivo === "ganar peso") {
+                calorías = 1800;
+            }
 
-            // Aquí se podría agregar la lógica para enviar los datos a un servidor o realizar alguna otra acción
-            alert(`Gracias, ${nombre}. Tu plan de alimentación será enviado a ${email} en breve.`);
+            // Sección 1: 1200 calorías
+            if (calorías === 1200) {
+                planAlimentacion += "<h2>Plan de Alimentación de 1200 calorías</h2>";
+                planAlimentacion += "<div style='background: #E8F5E9; padding: 20px; border-radius: 10px; margin-bottom: 20px;'>";
+                planAlimentacion += "<strong>Desayuno:</strong><br>";
+                planAlimentacion += "🍞 1 taza de avena cocida con frutas y nueces<br>";
+                planAlimentacion += "<strong>Almuerzo:</strong><br>";
+                planAlimentacion += "🥗 1 taza de ensalada de pollo con lechuga, tomate, pepino y aguacate<br>";
+                planAlimentacion += "<strong>Cena:</strong><br>";
+                planAlimentacion += "🍲 1 taza de arroz integral cocido con verduras al vapor y 100g de pescado a la parrilla<br>";
+                planAlimentacion += "<strong>Meriendas:</strong><br>";
+                planAlimentacion += "🍏 1 manzana con 1 cucharada de mantequilla de maní<br>";
+                planAlimentacion += "<strong>Bebidas:</strong><br>";
+                planAlimentacion += "💧 8 vasos de agua al día<br>";
+                planAlimentacion += "</div>";
+            }
+
+            // Sección 2: 1500 calorías
+            if (calorías === 1500) {
+                planAlimentacion += "<h2>Plan de Alimentación de 1500 calorías</h2>";
+                planAlimentacion += "<div style='background: #E8F5E9; padding: 20px; border-radius: 10px; margin-bottom: 20px;'>";
+                planAlimentacion += "<strong>Desayuno:</strong><br>";
+                planAlimentacion += "🍞 2 tazas de avena cocida con frutas y nueces<br>";
+                planAlimentacion += "<strong>Almuerzo:</strong><br>";
+                planAlimentacion += "🥗 1 taza de ensalada de pollo con lechuga, tomate, pepino, aguacate y queso feta<br>";
+                planAlimentacion += "<strong>Cena:</strong><br>";
+                planAlimentacion += "🍲 1 taza de arroz integral cocido con verduras al vapor, 100g de pescado a la parrilla y 1 cucharada de aceite de oliva<br>";
+                planAlimentacion += "<strong>Meriendas:</strong><br>";
+                planAlimentacion += "🍏 1 manzana con 2 cucharadas de mantequilla de maní<br>";
+                planAlimentacion += "<strong>Bebidas:</strong><br>";
+                planAlimentacion += "💧 10 vasos de agua al día<br>";
+                planAlimentacion += "</div>";
+            }
+
+            // Sección 3: 1800 calorías
+            if (calorías === 1800) {
+                planAlimentacion += "<h2>Plan de Alimentación de 1800 calorías</h2>";
+                planAlimentacion += "<div style='background: #E8F5E9; padding: 20px; border-radius: 10px; margin-bottom: 20px;'>";
+                planAlimentacion += "<strong>Desayuno:</strong><br>";
+                planAlimentacion += "🍞 3 tazas de avena cocida con frutas, nueces y 1 huevo<br>";
+                planAlimentacion += "<strong>Almuerzo:</strong><br>";
+                planAlimentacion += "🥗 1 taza de ensalada de pollo con lechuga, tomate, pepino, aguacate, queso feta y 1 cucharada de aceite de oliva<br>";
+                planAlimentacion += "<strong>Cena:</strong><br>";
+                planAlimentacion += "🍲 1 taza de arroz integral cocido con verduras al vapor, 150g de pescado a la parrilla, 1 cucharada de aceite de oliva y 1 taza de frutas<br>";
+                planAlimentacion += "<strong>Meriendas:</strong><br>";
+                planAlimentacion += "🍏 1 manzana con 3 cucharadas de mantequilla de maní y 1 taza de yogur griego<br>";
+                planAlimentacion += "<strong>Bebidas:</strong><br>";
+                planAlimentacion += "💧 12 vasos de agua al día<br>";
+                planAlimentacion += "</div>";
+            }
+
+            // Recomendaciones generales
+            planAlimentacion += "<div style='background: #E8F5E9; padding: 20px; border-radius: 10px; margin-bottom: 20px;'>";
+            planAlimentacion += "<strong>Recomendaciones generales:</strong><br>";
+            planAlimentacion += "🏋️‍♀️ Realiza al menos 30 minutos de ejercicio diario<br>";
+            planAlimentacion += "💧 Bebe al menos 8 vasos de agua al día<br>";
+            planAlimentacion += "🚫 Evita o consume con moderación alimentos procesados, grasas saturadas y azúcares añadidos<br>";
+            planAlimentacion += "</div>";
+
+            document.getElementById('plan-alimentacion').innerHTML = planAlimentacion;
         }
     </script>
+    
+    
 </body>
 </html>
