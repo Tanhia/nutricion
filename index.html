@@ -323,88 +323,8 @@
 
             document.getElementById('recomendaciones').innerHTML = recomendacion;
         }   
+        
     </script>
-    <script>
-        function generarPlanAlimentacion() {
-            let sexo = document.getElementById('sexo').value;
-            let estatura = document.getElementById('estatura').value;
-            let peso = document.getElementById('peso').value;
-            let objetivo = document.getElementById('objetivo').value;
-            let planAlimentacion = "";
-
-            // Calculo de calorías según objetivo
-            let calorías;
-            if (objetivo === "perder peso") {
-                calorías = 1200;
-            } else if (objetivo === "mantener peso") {
-                calorías = 1500;
-            } else if (objetivo === "ganar peso") {
-                calorías = 1800;
-            }
-
-            // Sección 1: 1200 calorías
-            if (calorías === 1200) {
-                planAlimentacion += "<h2>Plan de Alimentación de 1200 calorías</h2>";
-                planAlimentacion += "<div style='background: #E8F5E9; padding: 20px; border-radius: 10px; margin-bottom: 20px;'>";
-                planAlimentacion += "<strong>Desayuno:</strong><br>";
-                planAlimentacion += "🍞 1 taza de avena cocida con frutas y nueces<br>";
-                planAlimentacion += "<strong>Almuerzo:</strong><br>";
-                planAlimentacion += "🥗 1 taza de ensalada de pollo con lechuga, tomate, pepino y aguacate<br>";
-                planAlimentacion += "<strong>Cena:</strong><br>";
-                planAlimentacion += "🍲 1 taza de arroz integral cocido con verduras al vapor y 100g de pescado a la parrilla<br>";
-                planAlimentacion += "<strong>Meriendas:</strong><br>";
-                planAlimentacion += "🍏 1 manzana con 1 cucharada de mantequilla de maní<br>";
-                planAlimentacion += "<strong>Bebidas:</strong><br>";
-                planAlimentacion += "💧 8 vasos de agua al día<br>";
-                planAlimentacion += "</div>";
-            }
-
-            // Sección 2: 1500 calorías
-            if (calorías === 1500) {
-                planAlimentacion += "<h2>Plan de Alimentación de 1500 calorías</h2>";
-                planAlimentacion += "<div style='background: #E8F5E9; padding: 20px; border-radius: 10px; margin-bottom: 20px;'>";
-                planAlimentacion += "<strong>Desayuno:</strong><br>";
-                planAlimentacion += "🍞 2 tazas de avena cocida con frutas y nueces<br>";
-                planAlimentacion += "<strong>Almuerzo:</strong><br>";
-                planAlimentacion += "🥗 1 taza de ensalada de pollo con lechuga, tomate, pepino, aguacate y queso feta<br>";
-                planAlimentacion += "<strong>Cena:</strong><br>";
-                planAlimentacion += "🍲 1 taza de arroz integral cocido con verduras al vapor, 100g de pescado a la parrilla y 1 cucharada de aceite de oliva<br>";
-                planAlimentacion += "<strong>Meriendas:</strong><br>";
-                planAlimentacion += "🍏 1 manzana con 2 cucharadas de mantequilla de maní<br>";
-                planAlimentacion += "<strong>Bebidas:</strong><br>";
-                planAlimentacion += "💧 10 vasos de agua al día<br>";
-                planAlimentacion += "</div>";
-            }
-
-            // Sección 3: 1800 calorías
-            if (calorías === 1800) {
-                planAlimentacion += "<h2>Plan de Alimentación de 1800 calorías</h2>";
-                planAlimentacion += "<div style='background: #E8F5E9; padding: 20px; border-radius: 10px; margin-bottom: 20px;'>";
-                planAlimentacion += "<strong>Desayuno:</strong><br>";
-                planAlimentacion += "🍞 3 tazas de avena cocida con frutas, nueces y 1 huevo<br>";
-                planAlimentacion += "<strong>Almuerzo:</strong><br>";
-                planAlimentacion += "🥗 1 taza de ensalada de pollo con lechuga, tomate, pepino, aguacate, queso feta y 1 cucharada de aceite de oliva<br>";
-                planAlimentacion += "<strong>Cena:</strong><br>";
-                planAlimentacion += "🍲 1 taza de arroz integral cocido con verduras al vapor, 150g de pescado a la parrilla, 1 cucharada de aceite de oliva y 1 taza de frutas<br>";
-                planAlimentacion += "<strong>Meriendas:</strong><br>";
-                planAlimentacion += "🍏 1 manzana con 3 cucharadas de mantequilla de maní y 1 taza de yogur griego<br>";
-                planAlimentacion += "<strong>Bebidas:</strong><br>";
-                planAlimentacion += "💧 12 vasos de agua al día<br>";
-                planAlimentacion += "</div>";
-            }
-
-            // Recomendaciones generales
-            planAlimentacion += "<div style='background: #E8F5E9; padding: 20px; border-radius: 10px; margin-bottom: 20px;'>";
-            planAlimentacion += "<strong>Recomendaciones generales:</strong><br>";
-            planAlimentacion += "🏋️‍♀️ Realiza al menos 30 minutos de ejercicio diario<br>";
-            planAlimentacion += "💧 Bebe al menos 8 vasos de agua al día<br>";
-            planAlimentacion += "🚫 Evita o consume con moderación alimentos procesados, grasas saturadas y azúcares añadidos<br>";
-            planAlimentacion += "</div>";
-
-            document.getElementById('plan-alimentacion').innerHTML = planAlimentacion;
-        }
-    </script>
-    
     
 </body>
 </html>
